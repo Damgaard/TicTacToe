@@ -39,6 +39,42 @@ namespace TicTacToe
             return true;
         }
 
+        public bool IsWon()
+        {
+            // Horizontal
+            for (int i = 0; i < HEIGHT; i++)
+            {
+                if (GetPosition(0, i) != Field.Empty && (GetPosition(0, i) == GetPosition(1, i)) && (GetPosition(1, i) == GetPosition(2, i) ))
+                {
+                    return true;
+                }
+            }
+
+            // Vertical
+            for (int i = 0; i < WIDTH; i++)
+            {
+                if (GetPosition(i, 0) != Field.Empty && (GetPosition(i, 0) == GetPosition(i, 1)) && (GetPosition(i, 1) == GetPosition(i, 2)))
+                {
+                    return true;
+                }
+            }
+
+            // Diagonals
+            if (GetPosition(1, 1) != Field.Empty) {
+                // Top left to bottom right
+                if ((GetPosition(0, 0) == GetPosition(1, 1)) && (GetPosition(1, 1) == GetPosition(2, 2)))
+                {
+                    return true;
+                }
+                // Top right to bottom left
+                if ((GetPosition(0, 2) == GetPosition(1, 1)) && (GetPosition(1, 1) == GetPosition(2, 0)))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public bool CanPlace(int pos)
         {
             return positions[pos] == Field.Empty;

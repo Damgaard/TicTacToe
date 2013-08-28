@@ -40,6 +40,8 @@ namespace TicTacToe
             String empty = "#   #   #   #";
             String line;
 
+            ClearScreen();
+
             Console.WriteLine(horizontalBorder);
             for (int i = 0; i < Board.HEIGHT; i++)
             {
@@ -55,6 +57,17 @@ namespace TicTacToe
                 Console.WriteLine(empty);
                 Console.WriteLine(horizontalBorder);
             }
+        }
+
+        static public void GameOver()
+        {
+            Console.WriteLine("Game over!");
+        }
+
+        static public void Victory(IPlayer player)
+        {
+            Console.WriteLine("Player '{0}' is victorious!", player.Get_Name());
+            Console.WriteLine("");
         }
     }
 }
