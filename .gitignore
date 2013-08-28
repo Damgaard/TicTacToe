@@ -1,0 +1,16 @@
+# Liberated from SirCmpwn #
+###########################
+#
+# See https://github.com/SirCmpwn/RedditSharp/blob/master/.gitignore
+
+bin/
+obj/
+*.user
+*.userprefs
+*.suo
+*.pidb
+_ReSharper*/
+TestResults/
+*.mdf
+*.psess
+*.vsp
