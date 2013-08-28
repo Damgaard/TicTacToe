@@ -22,13 +22,11 @@ namespace TicTacToe
             while (!Board.IsFull())
             {
                 View.ClearScreen();
-                next_player = next_player == player1 ? player2 : player1;
-                Console.WriteLine(next_player.Name);
-                next_move = next_player.Move();
-                Board.SetPosition(next_move, next_player.PlayerType);
                 View.DisplayBoard(Board);
-                Console.WriteLine("It is now player " + next_player.Name + "s turn to move.");
-                Console.ReadLine();
+                next_player = next_player == player1 ? player2 : player1;
+                Console.WriteLine("It is now player " + next_player.Get_Name() + "s turn to move.");
+                next_move = next_player.Move();
+                Board.SetPosition(next_move, next_player.Get_PlayerType());
             }
         }
     }
