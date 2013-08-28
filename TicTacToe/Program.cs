@@ -11,11 +11,11 @@ namespace TicTacToe
         static void Main(string[] args)
         {
             int next_move;
-            RandomAI next_player;
+            IPlayer next_player;
             Board Board = new Board();
 
-            RandomAI player1 = new RandomAI("Player1", ref Board, Field.Circle);
-            RandomAI player2 = new RandomAI("Player2", ref Board, Field.Cross);
+            IPlayer player1 = new RandomAI("Player1", ref Board, Field.Circle);
+            IPlayer player2 = new Human("Player2", ref Board, Field.Cross);
             next_player = player2;
 
             View.Introduction();
