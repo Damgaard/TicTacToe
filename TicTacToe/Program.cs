@@ -8,14 +8,57 @@ namespace TicTacToe
 {
     class Program
     {
+        static void SelectPlayers(out IPlayer player1, out IPlayer player2, ref Board Board)
+        {
+            int turn = 1, choice;
+            string name;
+            player1 = null;
+            player2 = null;
+            do
+            {
+                View.ClearScreen();
+                View.SelectPlayer(turn);
+                View.SelectPlayerMenu();
+                choice = View.GetIntegerChoice();
+                if (choice == 1 || choice == 2)
+                {
+                    View.ChooseName();
+                    name = View.GetStringChoice();
+                    if (turn == 1)
+                    {
+                        if (choice == 1)
+                        {
+                            player1 = new RandomAI(name, ref Board, Field.Circle);
+                        }
+                        else
+                        {
+                            player1 = new Human(name, ref Board, Field.Circle);
+                        }
+                    }
+                    else
+                    {
+                        if (choice == 1)
+                        {
+                            player2 = new RandomAI(name, ref Board, Field.Cross);
+                        }
+                        else
+                        {
+                            player2 = new Human(name, ref Board, Field.Cross);
+                        }
+                    }
+                    turn++;
+                }
+            } while (turn < 3);
+        }
+
         static void Main(string[] args)
         {
             int next_move;
-            IPlayer next_player;
+            IPlayer next_player, player1, player2;
             Board Board = new Board();
 
-            IPlayer player1 = new RandomAI("Player1", ref Board, Field.Circle);
-            IPlayer player2 = new Human("Player2", ref Board, Field.Cross);
+            SelectPlayers(out player1, out player2, ref Board);
+
             next_player = player2;
 
             View.Introduction();
