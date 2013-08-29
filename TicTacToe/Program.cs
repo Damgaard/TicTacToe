@@ -26,6 +26,10 @@ namespace TicTacToe
                     name = View.GetStringChoice();
                     if (turn == 1)
                     {
+                        // This give a compilation error when using tertiary operator
+                        // player1 = choice == 1 ? new RandomAI(name, ref Board, Field.Circle) : new Human(name, ref Board, Field.Circle);
+                        // Type of conditional expression cannot be determined because
+                        // there is no implicit conversion between 'TicTacToe.RandomAI' and 'TicTacToe.Human'
                         if (choice == 1)
                         {
                             player1 = new RandomAI(name, ref Board, Field.Circle);
@@ -66,7 +70,7 @@ namespace TicTacToe
             {
                 View.DisplayBoard(Board);
                 next_player = next_player == player1 ? player2 : player1;
-                Console.WriteLine("It is now player " + next_player.Get_Name() + "s turn to move.");
+                View.PlayerToMove(next_player.Get_Name());
                 next_move = next_player.Move();
                 Board.SetPosition(next_move, next_player.Get_PlayerType());
             }

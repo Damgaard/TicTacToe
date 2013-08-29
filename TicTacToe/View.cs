@@ -96,5 +96,10 @@ namespace TicTacToe
             Console.WriteLine("1. RandomAI");
             Console.WriteLine("2. Human");
         }
+
+        static public void PlayerToMove(string player_name)
+        {
+            Console.WriteLine("It is now player " + player_name + "s turn to move.");
+        }
     }
 }
